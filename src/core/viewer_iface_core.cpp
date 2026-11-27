@@ -1,5 +1,7 @@
 #include "viewer_iface.h"
 #include "util.h"
+#include <iostream>
+using namespace std;
 
 // Terminal UI and dashboard rendering using primitive parameters
 void renderDashboard(int playerFloor, int playerRoom, int energy, int time, int score,
