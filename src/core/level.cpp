@@ -223,3 +223,85 @@ bool loadInitialState(const char* filename,
     file.close();
     return true;
 }
+
+bool validateStartingRoom(int startFloor, int startRoom,
+                          const char horizontalConn[NUM_FLOORS][ROOMS_PER_FLOOR - 1])
+                          {
+                            if (startFloor<1||startFloor>NUM_FLOORS||startRoom<1||startRoom>ROOMS_PER_FLOOR)
+                            return false;
+
+                            int conn=0;
+
+                            //left connectioms
+                            if(startRoom>1&&(horizontalConn[startFloor-1][startRoom-2]!=CONN_NONE && horizontalConn[startFloor-1][startRoom-2]!=CONN_SOLID_WALL))
+                            conn=1;
+                            
+                            //right connections
+                            if(startRoom<ROOMS_PER_FLOOR &&(horizontalConn[startFloor-1][startRoom-1]!=CONN_NONE && horizontalConn[startFloor-1][startRoom-1]!=CONN_SOLID_WALL))
+                            conn=1;
+
+                            if (conn==0)
+                            return false;
+
+                            return true;
+
+
+                          }
+
+
+const char* getEntityName(char entitySymbol)
+{
+    if (entitySymbol==ENT_MASTER_KEY)
+    return "master key";
+        
+    else if (entitySymbol==ENT_ENERGY_PACK)
+        return "energy pack";
+        
+    else if (entitySymbol ==ENT_EMERGENCY_TOOLKIT)
+        return "emergency toolkit";
+        
+    else if (entitySymbol==ENT_CLUE_4)
+        return "clue digit 4";
+        
+    else if (entitySymbol==ENT_FUSE)
+        return "fuse";
+        
+
+    else if (entitySymbol== ENT_CAT)
+        return "cat";
+        
+    else if (entitySymbol==ENT_CONTROL_PANEL)
+            return "control panel";
+        
+    else if (entitySymbol==ENT_LIFT_PASS)
+        return "lift pass";
+        
+    else if (entitySymbol==ENT_PASSENGER)
+        return "injured passenger";
+        
+    else if (entitySymbol==ENT_MEDICAL_KIT)
+        return "medical kit";
+        
+    else if (entitySymbol==ENT_EMERGENCY_CARD)
+        return "emergency access card";
+        
+    else if (entitySymbol==ENT_CLUE_2)
+        return "clue digit 2";
+        
+    else if (entitySymbol==ENT_CLUE_7)
+        return "clue digit 7";
+        
+
+    else if (entitySymbol==ENT_CABINET_TRAIN_KEY)
+        return "cabinet /train key";
+        
+    else if (entitySymbol==ENT_CAT_CARRIER)
+            return "cat carrier";
+        
+    else if (entitySymbol== ENT_OBSERVATION_TOKEN)
+        return "observation token";
+        
+    else
+
+        return "unknown";
+}
