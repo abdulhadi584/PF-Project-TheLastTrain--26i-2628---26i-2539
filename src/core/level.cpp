@@ -125,6 +125,5 @@ bool loadBuildingMap(const char* filename,
 
 
 
-                           roomEntities[floor][room][entityCounts[floor][room]]=entitySymbol;
-                           entityCounts[floor][room]++; 
+            
                         }
